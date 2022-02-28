@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.shardingjdbcdemo.web.mapper.StudentQuestionMapper">
+    <resultMap type="com.example.shardingjdbcdemo.web.vo.StudentQuestion" id="StudentQuestionMap">
+        <result column="id" property="id" jdbcType="BIGINT"/>
+        <result column="exam_id" property="examId" jdbcType="VARCHAR"/>
+        <result column="person_id" property="personId" jdbcType="VARCHAR"/>
+        <result column="answer_sheet_item_id" property="answerSheetItemId" jdbcType="VARCHAR"/>
+        <result column="ques_id" property="quesId" jdbcType="VARCHAR"/>
+        <result column="is_optional" property="isOptional" jdbcType="TINYINT"/>
+        <result column="is_recommend" property="isRecommend" jdbcType="TINYINT"/>
+        <result column="create_time" property="createTime" jdbcType="DATE"/>
+        <result column="update_time" property="updateTime" jdbcType="DATE"/>
+        <result column="is_del" property="isDel" jdbcType="TINYINT"/>
+    </resultMap>
+    <!-- 新增 -->
+    <insert id="insertStudentQuestion" parameterType="com.example.shardingjdbcdemo.web.vo.StudentQuestion">
+        insert into ps_student_question(id,
+                                        exam_id,
+                                        person_id,
+                                        answer_sheet_item_id,
+                                        ques_id,
+                                        is_optional,
+                                        is_recommend,
+                                        create_time,
+                                        update_time,
+                                        is_del)
+        values (#{id},
+                #{examId},
+                #{personId},
+                #{answerSheetItemId},
+                #{quesId},
+                #{isOptional},
+                #{isRecommend},
+                #{createTime},
+                #{updateTime},
+                #{isDel})
+    </insert>
+    <!-- 删除 -->
+    <delete id="deleteStudentQuestion" parameterType="com.example.shardingjdbcdemo.web.vo.StudentQuestion">
+        delete from ps_student_question
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="examId != null">
+                and exam_id = #{examId}
+            </if>
+            <if test="personId != null">
+                and person_id = #{personId}
+            </if>
+            <if test="answerSheetItemId != null">
+                and answer_sheet_item_id = #{answerSheetItemId}
+            </if>
+            <if test="quesId != null">
+                and ques_id = #{quesId}
+            </if>
+            <if test="isOptional != null">
+                and is_optional = #{isOptional}
+            </if>
+            <if test="isRecommend != null">
+                and is_recommend = #{isRecommend}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="isDel != null">
+                and is_del = #{isDel}
+            </if>
+        </where>
+    </delete>
+    <!-- 更新 -->
+    <update id="updateStudentQuestion" parameterType="com.example.shardingjdbcdemo.web.vo.StudentQuestion">
+        update ps_student_question
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="examId != null">
+                exam_id = #{examId},
+            </if>
+            <if test="personId != null">
+                person_id = #{personId},
+            </if>
+            <if test="answerSheetItemId != null">
+                answer_sheet_item_id = #{answerSheetItemId},
+            </if>
+            <if test="quesId != null">
+                ques_id = #{quesId},
+            </if>
+            <if test="isOptional != null">
+                is_optional = #{isOptional},
+            </if>
+            <if test="isRecommend != null">
+                is_recommend = #{isRecommend},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="isDel != null">
+                is_del = #{isDel},
+            </if>
+        </set>
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="examId != null">
+                and exam_id = #{examId}
+            </if>
+            <if test="personId != null">
+                and person_id = #{personId}
+            </if>
+            <if test="answerSheetItemId != null">
+                and answer_sheet_item_id = #{answerSheetItemId}
+            </if>
+            <if test="quesId != null">
+                and ques_id = #{quesId}
+            </if>
+            <if test="isOptional != null">
+                and is_optional = #{isOptional}
+            </if>
+            <if test="isRecommend != null">
+                and is_recommend = #{isRecommend}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="isDel != null">
+                and is_del = #{isDel}
+            </if>
+        </where>
+    </update>
+    <!-- 查询列表 -->
+    <select id="listStudentQuestion" parameterType="com.example.shardingjdbcdemo.web.vo.StudentQuestion"
+            resultMap="StudentQuestionMap">
+        select * from ps_student_question
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="examId != null">
+                and exam_id = #{examId}
+            </if>
+            <if test="personId != null">
+                and person_id = #{personId}
+            </if>
+            <if test="answerSheetItemId != null">
+                and answer_sheet_item_id = #{answerSheetItemId}
+            </if>
+            <if test="quesId != null">
+                and ques_id = #{quesId}
+            </if>
+            <if test="isOptional != null">
+                and is_optional = #{isOptional}
+            </if>
+            <if test="isRecommend != null">
+                and is_recommend = #{isRecommend}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+                and is_del = 0
+        </where>
+    </select>
+
+    <select id="listStudentQuestionClass" parameterType="com.example.shardingjdbcdemo.web.vo.StudentQuestion"
+            resultMap="StudentQuestionMap">
+        SELECT
+        ps.*
+        FROM
+        ps_examinee pe
+        INNER JOIN ps_student_question ps ON ps.exam_id = pe.exam_id
+        AND ps.person_id = pe.person_id
+        AND ps.is_del = 0
+        WHERE pe.is_del = 0
+        <if test="examId != null">
+            AND pe.exam_id = #{examId}
+        </if>
+        <if test="clazzId != null">
+            AND pe.clazz_id = #{clazzId}
+        </if>
+    </select>
+
+	<insert id="batchSaveStudentQuestion">
+		insert into ps_student_question(
+		exam_id,
+		person_id,
+        answer_sheet_item_id,
+		ques_id,
+		is_optional,
+		is_recommend,
+		create_time,
+		is_del
+		) VALUES
+		<foreach collection="list" item="item" separator=",">
+			(#{item.examId},
+			#{item.personId},
+			#{item.answerSheetItemId},
+			#{item.quesId},
+			#{item.isOptional},
+			#{item.isRecommend},
+			#{item.createTime},
+			#{item.isDel})
+		</foreach>
+	</insert>
+
+    <select id="selectCreateTime" resultType="string">
+        select DATE_FORMAT(create_time,'%Y_%m') from ps_exam where exam_id = #{examId}
+    </select>
+</mapper>
