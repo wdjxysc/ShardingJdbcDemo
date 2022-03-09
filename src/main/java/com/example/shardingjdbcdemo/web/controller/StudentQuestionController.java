@@ -32,4 +32,21 @@ public class StudentQuestionController {
         return studentQuestions;
     }
 
+    @GetMapping(value = "/listAll")
+    public List<StudentQuestion> listAll(@RequestParam String examId){
+        StudentQuestion query = new StudentQuestion();
+        query.setExamId(examId);
+        final List<StudentQuestion> studentQuestions = studentQuestionService.listStudentQuestionClass(query);
+        return studentQuestions;
+    }
+
+
+    @GetMapping(value = "/listAllJoin")
+    public List<StudentQuestion> listAllJoin(@RequestParam String examId){
+        StudentQuestion query = new StudentQuestion();
+        query.setExamId(examId);
+        final List<StudentQuestion> studentQuestions = studentQuestionService.listStudentQuestionClassJoin(query);
+        return studentQuestions;
+    }
+
 }

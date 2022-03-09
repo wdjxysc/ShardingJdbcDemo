@@ -54,5 +54,8 @@ public interface StudentQuestionMapper {
 
 	void batchSaveStudentQuestion(@Param("list") List<StudentQuestion> list);
 
-	String selectCreateTime(@Param("examId") String examId);
+
+	List<StudentQuestion> listStudentQuestionClassJoin(StudentQuestion studentQuestion);
+
+	String selectTableSuffix(@Param("examId") String examId);
 }

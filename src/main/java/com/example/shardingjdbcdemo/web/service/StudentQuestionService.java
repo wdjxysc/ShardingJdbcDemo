@@ -45,7 +45,16 @@ public class StudentQuestionService {
 		return list;
 	}
 
+	public List<StudentQuestion> listStudentQuestionClassJoin(StudentQuestion studentQuestion){
+		List<StudentQuestion> list = studentQuestionMapper.listStudentQuestionClassJoin(studentQuestion);
+		return list;
+	}
+
 	public void batchSaveStudentQuestion(List<StudentQuestion> studentQuestions){
 		studentQuestionMapper.batchSaveStudentQuestion(studentQuestions);
+	}
+
+	public String selectTableSuffix(String examId){
+		return studentQuestionMapper.selectTableSuffix(examId);
 	}
 }

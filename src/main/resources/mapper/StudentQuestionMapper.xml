@@ -187,7 +187,7 @@
         AND ps.is_del = 0
         WHERE pe.is_del = 0
         <if test="examId != null">
-            AND pe.exam_id = #{examId}
+            AND ps.exam_id = #{examId}
         </if>
         <if test="clazzId != null">
             AND pe.clazz_id = #{clazzId}
@@ -217,7 +217,26 @@
 		</foreach>
 	</insert>
 
-    <select id="selectCreateTime" resultType="string">
-        select DATE_FORMAT(create_time,'%Y_%m') from ps_exam where exam_id = #{examId}
+
+    <select id="listStudentQuestionClassJoin" parameterType="com.example.shardingjdbcdemo.web.vo.StudentQuestion"
+            resultMap="StudentQuestionMap">
+        SELECT
+        ps.*
+        FROM
+        ps_student_question ps
+        INNER JOIN ps_examinee pe ON ps.exam_id = pe.exam_id
+        AND ps.person_id = pe.person_id
+        AND ps.is_del = 0
+        WHERE pe.is_del = 0
+        <if test="examId != null">
+            AND ps.exam_id = #{examId}
+        </if>
+        <if test="clazzId != null">
+            AND pe.clazz_id = #{clazzId}
+        </if>
+    </select>
+
+    <select id="selectTableSuffix" resultType="string">
+        select DATE_FORMAT(create_time, '_%Y_%m') from ps_exam where exam_id = #{examId}
     </select>
 </mapper>
